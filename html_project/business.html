@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"nome app"-login</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">"Nome dell'app"</h1>
+        <h5 id="username"></h5>
+        <h5 id="accountTypeDisplay"></h5>
+    </div>
+
+    <script>
+
+        const nome = localStorage.getItem('nome');
+        const cognome = localStorage.getItem('cognome');
+        const dataDiNascita = localStorage.getItem('dataDiNascita');
+        const email = localStorage.getItem('email');
+        const username = localStorage.getItem('username');
+        const password = localStorage.getItem('password');
+        const accountType = localStorage.getItem('accountType');
+
+
+        // Controlla se i dati sono disponibili e mostra i dati nella pagina
+        if (username && accountType) {
+            document.getElementById('username').innerText = `Nome Utente: ${username}`;
+            document.getElementById('accountTypeDisplay').innerText = `Tipo di Account: ${accountType}`;
+        } else {
+            // Se i dati non sono disponibili, mostra un messaggio di errore
+            document.getElementById('username').innerText = 'Dati non disponibili.';
+            document.getElementById('accountTypeDisplay').innerText = '';
+        }
+    </script>
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

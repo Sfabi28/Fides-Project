@@ -12,7 +12,7 @@
         <h1 class="text-center my-5">"Nome dell'app"</h1>
         <h5 class="text-center my-5">compila tutti i campi obbligatori</h5>
         
-        <form>
+        <form id="registrationForm" onsubmit="handleSubmit(event)">
 
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
@@ -23,6 +23,11 @@
                 <label for="cognome" class="form-label">Cognome</label>
                 <input type="text" class="form-control" id="Cognome" placeholder="Inserisci il tuo Cognome" required>
             </div>
+            
+            <div class="mb-3">
+                <label for="nome" class="form-label">Data Di Nascita</label>
+                <input type="date" class="form-control" id="DataDiNascita" placeholder="Inserisci la tua Data Di Nascita" required>
+            </div>
 
             <div class="mb-3">
                 <label for="nome" class="form-label">Email</label>
@@ -30,23 +35,18 @@
             </div>
 
             <div class="mb-3">
-                <label for="nome" class="form-label">Data Di Nascita</label>
-                <input type="date" class="form-control" id="Data Di Nascita" placeholder="Inserisci la tua Data Di Nascita" required>
-            </div>
-
-            <div class="mb-3">
                 <label for="utente" class="form-label">Nome Utente</label>
-                <input type="text" class="form-control" id="Nome Utente" placeholder="Inserisci il tuo Nome Utente" required>
+                <input type="text" class="form-control" id="NomeUtente" placeholder="Inserisci il tuo Nome Utente" required>
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Inserisci la tua password" required>
+                <input type="password" class="form-control" id="Password" placeholder="Inserisci la tua password" required>
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Reinserisci la tua password" required>
+                <input type="password" class="form-control" id="Password2" placeholder="Reinserisci la tua password" required>
             </div>
 
             <div class="mb-5">
@@ -64,6 +64,41 @@
         </form>
     </div>
     
+    <script>
+        function handleSubmit(event)
+        {
+            event.preventDefault();
+    
+            const nome = document.getElementById('Nome').value;
+            const cognome = document.getElementById('Cognome').value;
+            const dataDiNascita = document.getElementById('DataDiNascita').value;
+            const email = document.getElementById('Email').value;
+            const username = document.getElementById('NomeUtente').value;
+            const password = document.getElementById('Password').value;
+            const accountType = document.getElementById('accountType').value;
+
+            localStorage.setItem('nome', nome);
+            localStorage.setItem('cognome', cognome);
+            localStorage.setItem('dataDiNascita', dataDiNascita);
+            localStorage.setItem('email', email);
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+            localStorage.setItem('accountType', accountType);
+
+            if (accountType === 'business')
+            {
+                window.location.href = 'business.html';
+            } 
+            else if (accountType === 'worker')
+            {
+                window.location.href = 'worker.html';
+            }
+            else
+            {
+                alert('Seleziona un tipo di account valido');
+            }
+        }
+    </script>
     
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
