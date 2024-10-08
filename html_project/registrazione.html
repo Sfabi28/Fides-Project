@@ -54,7 +54,7 @@
                 <select id="accountType" class="form-select" required>
                     <option value="">Seleziona un tipo di account</option>
                     <option value="Business">Business</option>
-                    <option value="Worker">Worker</option>
+                    <option value="Employee">Employee</option>
                 </select>
             </div>
 
@@ -85,13 +85,13 @@
             localStorage.setItem('password', password);
             localStorage.setItem('accountType', accountType);
 
-            if (accountType === 'business')
+            if (accountType === 'Business')
             {
                 window.location.href = 'business.html';
             } 
-            else if (accountType === 'worker')
+            else if (accountType === 'Employee')
             {
-                window.location.href = 'worker.html';
+                window.location.href = 'employee.html';
             }
             else
             {
