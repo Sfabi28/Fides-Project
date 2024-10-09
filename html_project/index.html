@@ -12,7 +12,7 @@
         <h1 class="text-center my-5">"Nome dell'app"</h1>
         <h5 class="text-center my-5">please log in to your account or create a new one</h5>
         
-        <form>
+        <form onsubmit="return login();"> <!---->
             <div class="mb-3">
                 <label for="utente" class="form-label">Email</label>
                 <input type="email" class="form-control" id="Email" placeholder="Inserisci la tua Email" required>
@@ -27,7 +27,14 @@
         </form>
     </div>
     
-    
+    <script>
+        function login() {
+            /*gestire controllo autenticazione*/
+            window.location.href = "business.html";
+            return false;
+        }
+    </script>
+
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
