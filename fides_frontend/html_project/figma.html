@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            background-color: #f0f0f0;
+        }
+
+        /* Contenitore principale */
+        .container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background-color: #ffffff; /* Colore di sfondo principale */
+        }
+
+        /* Gradiente in alto */
+        .gradient {
+            width: 100%;
+            height: 30%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg, #112D4E 0%, #2768B4 100%);
+        }
+
+        /* Definizione del menu scorrevole */
+        .scrollable-menu {
+            position: fixed;
+            right: 13%; /* Posizionato a destra */
+            top: 28%; /* Posizione verticale */
+            width: 20%; /* Larghezza in percentuale */
+            min-width: 300px; /* Larghezza minima */
+            height: 60%; /* Altezza in percentuale */
+            min-height: 500px; /* Altezza minima */
+            overflow-y: auto; /* Scroll verticale se necessario */
+            background-color: #DBE2EF; /* Colore di sfondo del menu */
+            border-radius: 0px;
+        }
+
+        .scrollable-activity {
+            position: absolute;
+            left: 8%; /* Posizionato a sinistra */
+            top: 65%; /* Posizione verticale */
+            width: 44%; /* Larghezza in percentuale */
+            height: 20%; /* Altezza in percentuale */
+            overflow-y: auto; /* Scroll verticale se necessario */
+            background-color: #ffffff; /* Colore di sfondo del menu */
+            border-radius: 25px;
+        }
+
+        .top-menu {
+            position: fixed;
+            right: 13%; /* Posizione a destra */
+            top: 20%; /* Posizione verticale */
+            width: 20%; /* Larghezza in percentuale */
+            min-width: 300px; /* Larghezza minima */
+            height: 10%; /* Altezza in percentuale */
+            min-height: 50px; /* Altezza minima */
+            background-color: #DBE2EF; /* Colore di sfondo del menu */
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            text-align: center;
+            color: #112D4E;
+        }
+
+        .activity-background{
+            position: fixed;
+            background-color: #DBE2EF;
+            left: 5%;
+            bottom: 8%;
+            width: 50%;
+            height: 45%;
+            border-radius: 25px;
+            text-align: center;
+            color: #112D4E;
+        }
+
+        .calendar-background{
+            position: fixed;
+            background-color: #DBE2EF;
+            left: 5%;
+            bottom: 58%;
+            width: 20%;
+            height: 5%;
+            border: 4px solid #112D4E;
+            border-radius: 5px;
+            text-align: center;
+            color: #112D4E;
+            margin: 0 auto;
+        }
+
+        /* Pulsante per aggiungere nuove voci */
+        .add-item-button {
+            position: fixed;
+            right: 13%; /* Posizione a destra */
+            top: 88%; /* Posizionato subito sotto il menu */
+            width: 20%; /* Larghezza in percentuale */
+            min-width: 200px; /* Larghezza minima */
+            height: 40px; /* Altezza fissa */
+            background-color: #2768B4; /* Colore di sfondo del pulsante */
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        .add-item-button:hover {
+            background-color: #112D4E; /* Colore blu scuro al passaggio del mouse */
+        }
+
+        /* Style per gli elementi della lista */
+        .scrollable-menu ul {
+            list-style-type: none; /* Rimuove i punti elenco */
+            padding: 0;
+            margin: 0;
+        }
+
+        .scrollable-activity li {
+            display: flex;
+            padding: 8px;
+            background-color: white; /* Sfondo bianco per l'elemento */
+            border-bottom: 1px solid #646464;
+            cursor: pointer;
+            align-items: center; /* Allinea verticalmente */
+            border-radius: 5px;
+        }
+
+        .scrollable-menu li {
+            display: flex;
+            padding: 8px;
+            background-color: white; /* Sfondo bianco per l'elemento */
+            border-bottom: 1px solid #646464;
+            cursor: pointer;
+            align-items: center; /* Allinea verticalmente */
+            border-radius: 5px;
+        }
+
+        .scrollable-menu li:hover {
+            background-color: #f1f1f1; /* Cambia sfondo quando si passa sopra con il mouse */
+        }
+
+        /* Stile per il popup (modale) */
+        .modal {
+            display: none; /* Nasconde il popup di default */
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%); /* Centra la finestra modale */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+        }
+
+        .modal p {
+            margin-bottom: 20px;
+        }
+
+        .modal button {
+            padding: 10px;
+            background-color: #2768B4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .modal button:hover {
+            background-color: #112D4E;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="gradient"></div>
+    </div>
+
+    <div class="top-menu">
+        <h2>Roles</h2>
+    </div>
+
+    <div class="activity-background">
+        <h2>Activity</h2>
+    </div>
+    <!-- Menu scorrevole centrato a destra -->
+    <div class="scrollable-menu">
+        <ul id="menu-list">
+        </ul>
+    </div>
+
+    <div class="scrollable-activity">
+        <ul>
+            <li>Activity 1</li>
+            <li>Activity 2</li>
+            <li>Activity 3</li>
+            <li>Activity 4</li>
+            <li>Activity 5</li>
+            <li>Activity 6</li>
+            <li>Activity 7</li>
+            <li>Activity 8</li>
+            <li>Activity 9</li>
+            <li>Activity 10</li>
+        </ul>
+    </div>
+
+    <div class="calendar-background">
+        <label for="nome" class="form-label">Event Date</label>
+        <input type="date" class="form-control" id="Event Date" placeholder="Insert activity date">
+    </div>
+    
+    <button class="add-item-button" onclick="addNewItem()">ADD ROLE</button>
+
+    <!-- Popup (modale) -->
+    <div class="modal" id="modal">
+        <h2 id="modal-title">Titolo</h2>
+        <p id="modal-content">Contenuto</p>
+        <button onclick="closeModal()">Chiudi</button>
+    </div>
+
+    <script>
+        // Funzione per aggiungere un nuovo item al menu
+        function addNewItem() {
+            var menuList = document.getElementById("menu-list");
+            var newItem = document.createElement("li");
+            var itemCount = menuList.children.length + 1;
+            newItem.innerHTML = `<div class="green-bar"></div><span>Nuovo Item ${itemCount}</span>`;
+            newItem.setAttribute("onclick", `openModal('Nuovo Item ${itemCount}')`);
+            menuList.appendChild(newItem);
+        }
+
+        // Funzione per aprire la modale
+        function openModal(itemName) {
+            var modal = document.getElementById("modal");
+            modal.style.display = "block";
+            document.getElementById("modal-title").textContent = itemName;
+            document.getElementById("modal-content").textContent = "Questo è il contenuto del " + itemName;
+        }
+
+        // Funzione per chiudere la modale
+        function closeModal() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+
+        // Chiudere la modale cliccando fuori di essa
+        window.onclick = function(event) {
+            var modal = document.getElementById("modal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+    </script>
+
+</body>
+</html>

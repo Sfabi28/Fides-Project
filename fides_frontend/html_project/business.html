@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"nome app"-login</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .scrollable-menu {
+            width: 80%; /* Larghezza fissa in percentuale */
+            max-width: 1000px; /* Larghezza massima */
+            height: 200px; /* Altezza fissa */
+            overflow-y: auto; /* Attiva lo scorrimento verticale se necessario */
+            border: 1px solid #646464; /* Bordo del menu */
+            border-radius: 5px; /* Angoli arrotondati */
+            margin: 10px auto; /* Margini automatici per centrare */
+            background-color: #e2e2e2; /* Colore di sfondo del menu */
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1 class="text-center my-5">"Nome dell'app"</h1>
+        <div class="d-flex justify-content-center align-items-center">
+            <h2 class="mx-3" id="username"></h2>
+            <h2 class="mx-3">Account: <span id="accountTypeDisplay"></h2>
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="mt-5">I Tuoi Eventi:</h2>
+        <div class="scrollable-menu card card-body">
+            <ul class="list-group">
+                <li class="list-group-item">Evento 1</li>
+                <li class="list-group-item">Evento 2</li>
+                <li class="list-group-item">Evento 3</li>
+                <li class="list-group-item">Evento 4</li>
+                <li class="list-group-item">Evento 5</li>
+                <li class="list-group-item">Evento 6</li>
+                <li class="list-group-item">Evento 7</li>
+                <li class="list-group-item">Evento 8</li>
+                <li class="list-group-item">Evento 9</li>
+                <li class="list-group-item">Evento 10</li>
+            </ul>
+        </div>
+        <button type="submit" class="btn btn-primary">nuovo</button>
+    </div>
+
+    <script>Accedi
+
+        const nome = localStorage.getItem('nome');
+        const cognome = localStorage.getItem('cognome');
+        const dataDiNascita = localStorage.getItem('dataDiNascita');
+        const email = localStorage.getItem('email');
+        const username = localStorage.getItem('username');
+        const password = localStorage.getItem('password');
+        const accountType = localStorage.getItem('accountType');
+
+        if (username && accountType)
+        {
+            document.getElementById('username').innerText = `${username}`;
+            document.getElementById('accountTypeDisplay').innerText = `${accountType}`;
+        }
+        else
+        {
+            document.getElementById('username').innerText = 'Dati non disponibili.';
+            document.getElementById('accountTypeDisplay').innerText = '';
+        }
+    </script>
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

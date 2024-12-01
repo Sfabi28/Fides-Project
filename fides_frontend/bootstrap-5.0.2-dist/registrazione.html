@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"nome app"-registration</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">"Nome dell'app"</h1>
+        <h5 class="text-center my-5">compila tutti i campi obbligatori</h5>
+        
+        <form>
+
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="Nome" placeholder="Inserisci il tuo Nome" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="cognome" class="form-label">Cognome</label>
+                <input type="text" class="form-control" id="Cognome" placeholder="Inserisci il tuo Cognome" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="nome" class="form-label">Email</label>
+                <input type="email" class="form-control" id="Email" placeholder="Inserisci la tua Email" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="nome" class="form-label">Data Di Nascita</label>
+                <input type="date" class="form-control" id="Data Di Nascita" placeholder="Inserisci la tua Data Di Nascita" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="utente" class="form-label">Nome Utente</label>
+                <input type="text" class="form-control" id="Nome Utente" placeholder="Inserisci il tuo Nome Utente" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Inserisci la tua password" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Reinserisci la tua password" required>
+            </div>
+
+            <div class="mb-5">
+                <label for="accountType" class="form-label">Tipo di Account</label>
+                <select id="accountType" class="form-select" required>
+                    <option value="">Seleziona un tipo di account</option>
+                    <option value="business">Business</option>
+                    <option value="worker">Worker</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-3">Registrati</button>
+            <a href="index.html" class="btn btn-transparent mb-3">Accedi</a>
+
+        </form>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Previeni il comportamento di invio del modulo
+
+            const accountType = document.getElementById('accountType').value;
+
+            // Reindirizza alla pagina corretta in base al tipo di account
+            if (accountType === 'business') {
+                window.location.href = 'business.html'; // Pagina per account Business
+            } else if (accountType === 'worker') {
+                window.location.href = 'worker.html'; // Pagina per account Worker
+            } else {
+                alert('Seleziona un tipo di account valido!'); // Messaggio di errore se non selezionato
+            }
+        }
+    </script>
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
